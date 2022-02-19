@@ -5,6 +5,8 @@ int main() {
   auto window = context->CreateWindow();
   window->SetClearColour({0,0.4,0,1});
 
+  context->CreateShader("res/shaders/chunk_shader.vert.spv", "res/shaders/chunk_shader.frag.spv");
+
   while (window->IsOpen()) {
     cl::PollWindowEvents();
     window->Clear();
