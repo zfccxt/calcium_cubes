@@ -1,3 +1,6 @@
 [submodule "depend/calcium"]
 	path = depend/calcium
 	url = https://github.com/zfccxt/calcium
+[submodule "depend/simplex"]
+	path = depend/simplex
+	url = https://github.com/zfccxt/simplex

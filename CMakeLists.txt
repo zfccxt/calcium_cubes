@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(calcium_cubes)
 
-set(SOURCE_FILES src/main.cpp)
+set(SOURCE_FILES src/main.cpp src/block.hpp src/block.cpp src/chunk.hpp src/chunk.cpp src/chunk_constants.hpp src/chunk_generator.hpp src/chunk_generator.cpp src/world.hpp src/world.cpp src/camera.hpp src/camera.cpp src/control_settings.hpp src/control_settings.cpp src/key_bindings.hpp src/key_bindings.cpp)
 source_group("src" FILES ${SOURCE_FILES})
 
 set(SHADER_FILES src/shaders/chunk_shader.vert.glsl src/shaders/chunk_shader.frag.glsl)
@@ -12,6 +12,8 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 add_subdirectory(depend/calcium)
 target_link_libraries(${PROJECT_NAME} PRIVATE calcium)
+add_subdirectory(depend/simplex)
+target_link_libraries(${PROJECT_NAME} PRIVATE simplex)
 
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
