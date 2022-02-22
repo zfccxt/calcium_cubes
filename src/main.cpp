@@ -22,17 +22,16 @@ int main() {
 
   World world(context);
 
-  chunk_shader->Bind();
   chunk_shader->BindTexture("u_texture", block_texture);
   while (window->IsOpen()) {
     window->PollEvents();
-    window->Clear();
+    context->BeginRenderPass(chunk_shader);
 
     camera->FreeControl(window);
     camera->UploadTo(chunk_shader);
 
     world.Render(camera);
 
-    window->SwapBuffers();
+    context->EndRenderPass();
   }
 }
