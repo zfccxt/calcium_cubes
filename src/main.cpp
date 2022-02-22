@@ -3,15 +3,16 @@
 #include "key_bindings.hpp"
 #include "world.hpp"
 
-std::shared_ptr<cl::Window> window;
-auto camera = std::make_shared<Camera>();
 
 int main() {
   auto context = cl::CreateContext(cl::Backend::kOpenGL);
-  window = context->CreateWindow();
+  auto window = context->CreateWindow();
+
+  auto camera = std::make_shared<Camera>();
   camera->CalculateProjection(window->GetAspectRatio());
-  window->SetResizeCallback([](){ camera->CalculateProjection(window->GetAspectRatio()); });
-  window->SetKeyPressCallback(KeyBindings::key_inventory, [](){ window->ToggleCursorLock(); });
+  window->SetResizeCallback([&](){ camera->CalculateProjection(window->GetAspectRatio()); });
+  window->SetKeyPressCallback(KeyBindings::key_inventory, [&](){ window->ToggleCursorLock(); });
+  window->SetKeyPressCallback(KeyBindings::key_quit, [&](){ window->Close(); });
 
   auto chunk_shader = context->CreateShader("res/shaders/chunk_shader.vert.spv", "res/shaders/chunk_shader.frag.spv");
 

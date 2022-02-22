@@ -13,6 +13,7 @@ cl::KeyCode key_jump      = cl::KeyCode::kSpace;
 cl::KeyCode key_crouch    = cl::KeyCode::kLeftShift;
 
 cl::KeyCode key_inventory = cl::KeyCode::kE;
+cl::KeyCode key_quit      = cl::KeyCode::kEscape;
 
 cl::KeyCode key_rot_up    = cl::KeyCode::kUp;
 cl::KeyCode key_rot_down  = cl::KeyCode::kDown;

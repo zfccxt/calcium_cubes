@@ -13,6 +13,7 @@ extern cl::KeyCode key_jump;
 extern cl::KeyCode key_crouch;
 
 extern cl::KeyCode key_inventory;
+extern cl::KeyCode key_quit;
 
 extern cl::KeyCode key_rot_up;
 extern cl::KeyCode key_rot_down;
