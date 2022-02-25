@@ -5,8 +5,11 @@
 
 
 int main() {
-  auto context = cl::CreateContext(cl::Backend::kOpenGL);
-  auto window = context->CreateWindow();
+  auto context = cl::CreateContext(cl::Backend::kVulkan);
+  cl::WindowCreateInfo window_info;
+  window_info.enable_backface_cull = true;
+  window_info.front_face = cl::WindingOrder::kCounterClockwise;
+  auto window = context->CreateWindow(window_info);
 
   auto camera = std::make_shared<Camera>();
   camera->CalculateProjection(window->GetAspectRatio());
