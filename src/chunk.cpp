@@ -352,7 +352,7 @@ void Chunk::CreateMesh() {
   indices.resize(current_index);
 
   cl::MeshCreateInfo mesh_info;
-  mesh_info.vertex_data_layout = { cl::ShaderDataType::kFloat3, cl::ShaderDataType::kFloat2, cl::ShaderDataType::kFloat };
+  mesh_info.vertex_input_layout = { cl::ShaderDataType::kFloat3, cl::ShaderDataType::kFloat2, cl::ShaderDataType::kFloat };
   mesh_info.vertices = vertices.data();
   mesh_info.num_vertices = vertices.size();
   mesh_info.indices = indices.data();

@@ -5,7 +5,7 @@
 
 
 int main() {
-  auto context = cl::CreateContext(cl::Backend::kVulkan);
+  auto context = cl::CreateContext(cl::Backend::kOpenGL);
   cl::WindowCreateInfo window_info;
   window_info.enable_backface_cull = true;
   window_info.front_face = cl::WindingOrder::kCounterClockwise;
