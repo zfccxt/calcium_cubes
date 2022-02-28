@@ -6,10 +6,10 @@ World::World(std::shared_ptr<cl::Context>& context) {
   simplex_init();
 
   // TODO: Yeet all this
-  int draw_distance = 1;
+  int draw_distance = 8;
 
   for (int x = -draw_distance; x <= draw_distance; ++x) {
-    for (int y = -draw_distance; y <= draw_distance; ++y) {
+    for (int y = -2; y <= 0; ++y) {
       for (int z = -draw_distance; z <= draw_distance; ++z) {
         chunks_.push_back(std::make_unique<Chunk>(this, x, y, z, context));
       }

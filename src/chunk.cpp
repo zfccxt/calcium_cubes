@@ -42,13 +42,6 @@ void Chunk::CreateMesh() {
   size_t current_index = 0;
   uint16_t num_faces = 0;
 
-  Chunk* north_chunk = world_->GetChunkAt(chunk_x_, chunk_y_, chunk_z_ - 1);
-  Chunk* south_chunk = world_->GetChunkAt(chunk_x_, chunk_y_, chunk_z_ + 1);
-  Chunk* east_chunk  = world_->GetChunkAt(chunk_x_ - 1, chunk_y_, chunk_z_);
-  Chunk* west_chunk  = world_->GetChunkAt(chunk_x_ + 1, chunk_y_, chunk_z_);
-  Chunk* up_chunk    = world_->GetChunkAt(chunk_x_, chunk_y_ - 1, chunk_z_);
-  Chunk* down_chunk  = world_->GetChunkAt(chunk_x_, chunk_y_ + 1, chunk_z_);
-
   for (int x = 0; x < ChunkConstants::kChunkSize; ++x) {
     for (int y = 0; y < ChunkConstants::kChunkSize; ++y) {
       for (int z = 0; z < ChunkConstants::kChunkSize; ++z) {
@@ -57,13 +50,19 @@ void Chunk::CreateMesh() {
           continue;
         }
      
-        // TODO: Fix this
-        Block south_block  = z < ChunkConstants::kChunkSize - 1 ? blocks_[x + y *       ChunkConstants::kChunkSize + (z + 1) * ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : south_chunk ? south_chunk->GetBlockAt(x, y, ChunkConstants::kChunkSize - 1) : Block::kUndefined;
-        Block north_block  = z > 0 ?                              blocks_[x + y *       ChunkConstants::kChunkSize + (z - 1) * ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : north_chunk ? north_chunk->GetBlockAt(x, y, 0)                              : Block::kUndefined;
-        Block west_block   = x < ChunkConstants::kChunkSize - 1 ? blocks_[(x + 1) + y * ChunkConstants::kChunkSize + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : west_chunk  ? west_chunk->GetBlockAt(ChunkConstants::kChunkSize - 1, y, z)  : Block::kUndefined;
-        Block east_block   = x > 0 ?                              blocks_[(x - 1) + y * ChunkConstants::kChunkSize + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : east_chunk  ? east_chunk->GetBlockAt(0, y, z)                               : Block::kUndefined;
-        Block up_block     = y < ChunkConstants::kChunkSize - 1 ? blocks_[x + (y + 1) * ChunkConstants::kChunkSize + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : up_chunk    ? up_chunk->GetBlockAt(x, ChunkConstants::kChunkSize - 1, z)    : Block::kUndefined;
-        Block down_block   = y > 0 ?                              blocks_[x + (y - 1) * ChunkConstants::kChunkSize + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : down_chunk  ? down_chunk->GetBlockAt(x, 0, z)                               : Block::kUndefined;
+        // TODO: Occlusion culling across chunk boundaries
+        Block south_block  = z < ChunkConstants::kChunkSize - 1 ? blocks_[x + y *       ChunkConstants::kChunkSize
+          + (z + 1) * ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : Block::kUndefined;
+        Block north_block  = z > 0 ?                              blocks_[x + y *       ChunkConstants::kChunkSize
+          + (z - 1) * ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : Block::kUndefined;
+        Block west_block   = x < ChunkConstants::kChunkSize - 1 ? blocks_[(x + 1) + y * ChunkConstants::kChunkSize
+          + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : Block::kUndefined;
+        Block east_block   = x > 0 ?                              blocks_[(x - 1) + y * ChunkConstants::kChunkSize
+          + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : Block::kUndefined;
+        Block up_block     = y < ChunkConstants::kChunkSize - 1 ? blocks_[x + (y + 1) * ChunkConstants::kChunkSize
+          + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : Block::kUndefined;
+        Block down_block   = y > 0 ?                              blocks_[x + (y - 1) * ChunkConstants::kChunkSize
+          + z *       ChunkConstants::kChunkSize * ChunkConstants::kChunkSize] : Block::kUndefined;
 
         float u = BlockProps::GetTextureU(b, BlockFace::kSouth) * kTextureElementSize;
         float v = BlockProps::GetTextureV(b, BlockFace::kSouth) * kTextureElementSize;
