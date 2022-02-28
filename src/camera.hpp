@@ -7,6 +7,8 @@
 
 class Camera {
 public:
+  Camera(std::shared_ptr<cl::Window>& window);
+
   void UploadTo(std::shared_ptr<cl::Shader>& shader);
   void CalculateProjection(float aspect_ratio);
 
