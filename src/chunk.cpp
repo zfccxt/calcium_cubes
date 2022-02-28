@@ -74,7 +74,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightSouth;
 
           // top right
@@ -82,7 +82,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightSouth;
 
           // bottom left
@@ -90,7 +90,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightSouth;
 
           // bottom right
@@ -98,7 +98,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightSouth;
 
           // indices
@@ -120,7 +120,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightNorth;
 
           // top right
@@ -128,7 +128,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightNorth;
 
           // bottom left
@@ -136,7 +136,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightNorth;
 
           // bottom right
@@ -144,7 +144,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightNorth;
 
           // indices
@@ -166,7 +166,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightWest;
 
           // top right
@@ -174,7 +174,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightWest;
 
           // bottom left
@@ -182,7 +182,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightWest;
 
           // bottom right
@@ -190,7 +190,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightWest;
 
           // indices
@@ -212,7 +212,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightEast;
 
           // top right
@@ -220,7 +220,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 1.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v;
+          vertices[current_vertex++] = v + kTextureElementSize;
           vertices[current_vertex++] = kLightEast;
 
           // bottom left
@@ -228,7 +228,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 0.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightEast;
 
           // bottom right
@@ -236,7 +236,7 @@ void Chunk::CreateMesh() {
           vertices[current_vertex++] = 0.0f + y + chunk_y_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = 1.0f + z + chunk_z_ * ChunkConstants::kChunkSize;
           vertices[current_vertex++] = u + kTextureElementSize;
-          vertices[current_vertex++] = v + kTextureElementSize;
+          vertices[current_vertex++] = v;
           vertices[current_vertex++] = kLightEast;
 
           // indices

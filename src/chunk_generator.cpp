@@ -36,12 +36,19 @@ Block* GenerateChunk(World* world, int chunk_x, int chunk_y, int chunk_z) {
           continue;
         }
 
+        // Default block type is stone
         // TODO: Select stone type based on region
         blocks[index] = Block::kBasalt;
 
+        // Replace top layer of stone with dirt
         float dirt_depth = (float)abs(simplex_noise3d(block_x * kGradientSampleDistance, block_z * kGradientSampleDistance, 967.15f) + 0.9) * kDirtDepth;
         if (block_y < surface_height + dirt_depth) {
           blocks[index] = Block::kDirt;
+        }
+
+        // Replace top layer of dirt with grass
+        if (block_y < surface_height + 1.0f) {
+          blocks[index] = Block::kGrass;
         }
       }
     }
