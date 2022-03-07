@@ -5,7 +5,7 @@
 
 
 int main() {
-  auto context = cl::CreateContext(cl::Backend::kVulkan);
+  auto context = cl::Context::CreateContext(cl::Backend::kVulkan);
   cl::WindowCreateInfo window_info;
   window_info.clear_colour = 0x87ceebff;
   window_info.enable_backface_cull = true;
@@ -30,11 +30,13 @@ int main() {
   chunk_shader->BindTexture("u_texture", block_texture);
   while (window->IsOpen()) {
     window->PollEvents();
-    context->BeginRenderPass(chunk_shader);
 
     camera->FreeControl(window);
     camera->UploadTo(chunk_shader);
 
+    context->BeginRenderPass();
+
+    chunk_shader->Bind();
     world.Render(camera);
 
     context->EndRenderPass();
