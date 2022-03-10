@@ -34,11 +34,11 @@ int main() {
     camera->FreeControl(window);
     camera->UploadTo(chunk_shader);
 
-    context->BeginRenderPass();
+    context->BeginFrame();
 
     chunk_shader->Bind();
     world.Render(camera);
 
-    context->EndRenderPass();
+    context->EndFrame();
   }
 }
