@@ -12,7 +12,6 @@ namespace BlockProps {
 
 bool IsSolid(Block b);
 
-float GetTextureU(Block b, BlockFace f);
-float GetTextureV(Block b, BlockFace f);
+float GetTextureIndex(Block b, BlockFace f);
 
 }

@@ -1,10 +1,10 @@
 #version 450
 
 layout (location = 0) in vec3  a_pos;
-layout (location = 1) in vec2  a_tex;
+layout (location = 1) in vec3  a_tex;
 layout (location = 2) in float a_norm;
 
-layout (location = 0) out vec2 v_tex;
+layout (location = 0) out vec3 v_tex;
 layout (location = 1) flat out float v_norm;
 
 layout (binding = 0) uniform ViewProjectionMatrix {

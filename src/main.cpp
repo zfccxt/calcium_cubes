@@ -5,7 +5,8 @@
 
 
 int main() {
-  auto context = cl::Context::CreateContext(cl::Backend::kVulkan);
+  auto context = cl::Context::CreateContext(cl::Backend::kOpenGL);
+
   cl::WindowCreateInfo window_info;
   window_info.clear_colour = 0x87ceebff;
   window_info.enable_backface_cull = true;
@@ -20,14 +21,26 @@ int main() {
 
   auto chunk_shader = context->CreateShader("res/shaders/chunk_shader.vert.spv", "res/shaders/chunk_shader.frag.spv");
 
-  cl::TextureCreateInfo texture_info;
-  texture_info.file_path = "res/textures/block_texture_atlas.png";
-  texture_info.filter = cl::TextureFilter::kNearest;
-  auto block_texture = context->CreateTexture(texture_info);
+  cl::TextureArrayCreateInfo texture_array_info;
+  texture_array_info.AddFile("res/textures/dirt.png");          //  0
+  texture_array_info.AddFile("res/textures/grass.png");         //  1
+  texture_array_info.AddFile("res/textures/grass_side.png");    //  2
+  texture_array_info.AddFile("res/textures/log.png");           //  3
+  texture_array_info.AddFile("res/textures/log_side.png");      //  4
+  texture_array_info.AddFile("res/textures/leaves_1.png");      //  5
+  texture_array_info.AddFile("res/textures/leaves_2.png");      //  6
+  texture_array_info.AddFile("res/textures/leaves_3.png");      //  7
+  texture_array_info.AddFile("res/textures/leaves_opaque.png"); //  8
+  texture_array_info.AddFile("res/textures/basalt.png");        //  9
+  texture_array_info.AddFile("res/textures/andesite.png");      // 10
+  texture_array_info.AddFile("res/textures/limestone.png");     // 11
+  texture_array_info.AddFile("res/textures/rhyolite.png");      // 12
+  texture_array_info.filter = cl::TextureFilter::kNearest;
+  auto block_texture_array = context->CreateTextureArray(texture_array_info);
 
   World world(context);
 
-  chunk_shader->BindTexture("u_texture", block_texture);
+  chunk_shader->BindTextureArray("u_block_texture_array", block_texture_array);
   while (window->IsOpen()) {
     window->PollEvents();
 
