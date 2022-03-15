@@ -5,7 +5,7 @@
 
 
 int main() {
-  auto context = cl::Context::CreateContext(cl::Backend::kOpenGL);
+  auto context = cl::Context::CreateContext(cl::Backend::kVulkan);
 
   cl::WindowCreateInfo window_info;
   window_info.clear_colour = 0x87ceebff;

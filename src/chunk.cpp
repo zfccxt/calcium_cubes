@@ -35,7 +35,7 @@ Chunk::~Chunk() {
 
 void Chunk::CreateMesh() {
   cl::MeshCreateInfo mesh_info;
-  mesh_info.vertex_input_layout = { cl::ShaderDataType::kFloat3, cl::ShaderDataType::kFloat2, cl::ShaderDataType::kFloat };
+  mesh_info.vertex_input_layout = { cl::ShaderDataType::kFloat3, cl::ShaderDataType::kFloat3, cl::ShaderDataType::kFloat };
 
   mesh_info.vertices.resize(ChunkConstants::kChunkSize * ChunkConstants::kChunkSize * ChunkConstants::kChunkSize * 6 * 4 * kVertexSize);
   mesh_info.indices.resize(ChunkConstants::kChunkSize * ChunkConstants::kChunkSize * ChunkConstants::kChunkSize * 6 * kNumIndicesPerFace);
