@@ -5,8 +5,6 @@
 #include "key_bindings.hpp"
 #include "world.hpp"
 
-#include <iostream>
-
 int main() {
   auto context = cl::Context::CreateContext(cl::Backend::kOpenGL);
 
@@ -14,7 +12,7 @@ int main() {
   window_info.clear_colour = 0x87ceebff;
   window_info.enable_backface_cull = true;
   window_info.front_face = cl::WindingOrder::kCounterClockwise;
-  window_info.enable_vsync = false;
+  window_info.enable_vsync = true;
   auto window = context->CreateWindow(window_info);
 
   auto camera = std::make_shared<Camera>(window);
@@ -44,10 +42,7 @@ int main() {
 
   World world(context);
 
-  uint64_t num_frames = 0;
   auto start_time = std::chrono::high_resolution_clock::now();
-  float elapsed_seconds = 0.0f;
-  float total_seconds = 20.0f;
 
   chunk_shader->BindTextureArray("u_block_texture_array", block_texture_array);
   while (window->IsOpen()) {
@@ -62,18 +57,5 @@ int main() {
     world.Render(camera);
 
     context->EndFrame();
-
-    ++num_frames;
-    auto current_time = std::chrono::high_resolution_clock::now();
-    elapsed_seconds = std::chrono::duration<float, std::chrono::seconds::period>(current_time - start_time).count();
-    if (elapsed_seconds > total_seconds) {
-      window->Close();
-    }
   }
-  
-  std::cout << "       Elapsed time: " << elapsed_seconds << " seconds" << "\n";
-  std::cout << "Num frames rendered: " << num_frames << "\n";
-  float framerate = (float)num_frames / elapsed_seconds;
-  std::cout << "      Avg framerate: " << framerate << " fps" << "\n";
-  std::cin.get();
 }

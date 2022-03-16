@@ -28,4 +28,5 @@ private:
 
   glm::mat4 proj_= glm::mat4(1.0f);
   glm::mat4 view_= glm::mat4(1.0f);
+  glm::mat4 cached_vpmatrix_ = glm::mat4(1.0f);
 };
